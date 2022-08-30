@@ -13,6 +13,7 @@ const prisma = new PrismaClient()
         if (allusers==0){
             var json2 = [
                 { 
+                    
                     id  :"0",
                     email :"null",
                     password   :"null",
