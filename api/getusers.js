@@ -8,6 +8,7 @@ const prisma = new PrismaClient()
         const allusers = await prisma.student.findMany({
             select: {
                 id:true,
+                
             },
         });
         if (allusers==0){
