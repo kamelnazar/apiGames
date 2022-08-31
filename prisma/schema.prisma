@@ -11,14 +11,23 @@ datasource db {
   url      = env("DATABASE_URL")
   referentialIntegrity="prisma"
 }
-model Employee {
+model Student {
       id        Int @id @default(autoincrement())
-      email     String   @unique
+      email     String?   @unique
       password  String?
-      username  String?
+      username  String
       role      String?
       createdAt DateTime @default(now())
       updatedAt DateTime @default(now())
-      score String?
-      description String?
+      lesson   Lesson @relation(fields: [id], references: [lessonid])
     }
+
+model Lesson {
+  lessonid Int @id @default(autoincrement())
+  name String? @unique
+  student_profile Student[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  score String?
+  description String?
+  }

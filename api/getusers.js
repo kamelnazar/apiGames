@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
   /*     const { name } = request.query;
       response.end("Hello kamel"); */
     try {
-        const allusers = await prisma.employee.findMany({
+        const allusers = await prisma.student.findMany({
             select: {
                 id:true,
             },
@@ -13,7 +13,7 @@ const prisma = new PrismaClient()
         if (allusers==0){
             var json2 = [
                 { 
-                    
+
                     id  :"0",
                     email :"null",
                     password   :"null",

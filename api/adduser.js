@@ -12,7 +12,7 @@ export default  async function handler(req, res) {
     } = data;
     console.log(data);
     try {
-        await prisma.employee.create({
+        await prisma.student.create({
             data: {
                 email,
                 password,
@@ -22,7 +22,7 @@ export default  async function handler(req, res) {
             },
           });
           
-        res.status(200).json({message:"Customer was created succefully",});
+        res.status(200).json({message:"user was created succefully",});
     } catch (error) {
         res.status(400).json({message:error.message,});
     }
