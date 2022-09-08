@@ -8,8 +8,8 @@ const prisma = new PrismaClient()
      res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    req.header("Content-Type", "application/json");
-    res.header("Content-Type", "application/json");
+    req.header('Content-Type', 'application/json');
+    res.header('Content-Type', 'application/json');
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
