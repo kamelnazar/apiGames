@@ -4,11 +4,13 @@ const prisma = new PrismaClient()
  export default  async function handler(req, res) {
   /*     const { name } = request.query;
       response.end("Hello kamel"); */
+      response.setHeader('Access-Control-Allow-Origin', "*");
+      response.setHeader('Access-Control-Allow-Credentials' , true );
     try {
         const allusers = await prisma.student.findMany({
             select: {
                 id:true,
-                
+
             },
         });
         if (allusers==0){
