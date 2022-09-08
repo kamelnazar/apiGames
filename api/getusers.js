@@ -4,8 +4,17 @@ const prisma = new PrismaClient()
  export default  async function handler(req, res) {
   /*     const { name } = request.query;
       response.end("Hello kamel"); */
-      response.setHeader('Access-Control-Allow-Origin', "*");
-      response.setHeader('Access-Control-Allow-Credentials' , true );
+     res.setHeader('Access-Control-Allow-Origin', 'https://api-games-sigma.vercel.app/');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
     try {
         const allusers = await prisma.student.findMany({
             select: {
