@@ -31,3 +31,16 @@ model Lesson {
   score String?
   description String?
   }
+  
+// model conversation_Answers_model{
+// studentid Student  
+// ConversationIndex Int
+// conversationChat String
+// }
+// model Conversation{
+// ConversationID Int  @id @default(autoincrement())
+// ConversationName String
+// Conversation_Lesson Int
+// modaficationdate DateTime
+// AddedConversationDate DateTime
+// }
