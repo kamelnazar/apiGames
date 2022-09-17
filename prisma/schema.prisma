@@ -2,36 +2,37 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  previewFeatures=["referentialIntegrity"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-  referentialIntegrity="prisma"
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
+
 model Student {
-      id        Int @id @default(autoincrement())
-      email     String?   @unique
-      password  String?
-      username  String
-      role      String?
-      createdAt DateTime @default(now())
-      updatedAt DateTime @default(now())
-      lesson   Lesson @relation(fields: [id], references: [lessonid])
-    }
+  id        Int      @id @default(autoincrement())
+  email     String?  @unique
+  password  String?
+  username  String
+  role      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lesson    Lesson   @relation(fields: [id], references: [lessonid])
+}
 
 model Lesson {
-  lessonid Int @id @default(autoincrement())
-  name String? @unique
+  lessonid        Int       @id @default(autoincrement())
+  name            String?   @unique
+  score           String?
+  description     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
   student_profile Student[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  score String?
-  description String?
-  }
-  
+}
+
 // model conversation_Answers_model{
 // studentid Student  
 // ConversationIndex Int
