@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         username: username,
       },
     });
-    if (user.length > 0) return res.status(200).json(user[0]);
+    if (user.length > 0) return res.status(200).json({user: user[0]});
 
     res.status(200).json({ message: "No user with username was found" });
   } catch (error) {
