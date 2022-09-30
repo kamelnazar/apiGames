@@ -24,7 +24,8 @@ export default async function handler(req, res) {
     });
   }
 
-  const { username } = req.body.data;
+  const data = req.body;
+  const { username } = data;
 
   if (!username)
     return res.status(300).json({ message: "No username provided" });
