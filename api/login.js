@@ -24,9 +24,9 @@ export default async function handler(req, res) {
     });
   }
 
-  const data = req.body;
-  const { username } = data;
+  const {username} = req.query;
 
+console.log(username)
   if (!username)
     return res.status(300).json({ message: "No username provided" });
 
@@ -40,6 +40,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ message: "No user with username was found" });
   } catch (error) {
+    console.log(error.message)
     res.status(400).json({ message: error.message });
   }
 }
