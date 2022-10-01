@@ -2,31 +2,14 @@ import prisma from "../lib/prisma";
 
 // POST /api/login
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  res.setHeader("Content-Type", "application/json");
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-
-  res.setHeader("Access-Control-Allow-Credentials", false);
-
   if (req.method !== "POST") {
     return res.status(422).json({
       error: "Invalid request method",
     });
   }
 
-  const {username} = req.query;
+  const { username } = req.query;
 
-console.log(username)
   if (!username)
     return res.status(300).json({ message: "No username provided" });
 
@@ -36,11 +19,11 @@ console.log(username)
         username: username,
       },
     });
-    if (user.length > 0) return res.status(200).json({user: user[0]});
+    if (user.length > 0) return res.status(200).json([{ user: user[0] }]);
 
     res.status(200).json({ message: "No user with username was found" });
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
     res.status(400).json({ message: error.message });
   }
 }
