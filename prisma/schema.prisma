@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = "mysql://f9ep8j8gvn7u0eya85lc:pscale_pw_Dgq0tIRYmPi14FuBXrkK00FGRjuu3cOjYmvDRkEGCAb@us-east.connect.psdb.cloud/mysteries_of_nature_db?sslaccept=strict"
+  referentialIntegrity = "prisma"
+}
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  email     String?  @unique
+  password  String?
+  username  String
+  role      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lesson    Lesson   @relation(fields: [id], references: [lessonid])
+}
+
+model Lesson {
+  lessonid        Int       @id @default(autoincrement())
+  name            String?   @unique
+  score           String?
+  description     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  student_profile Student[]
+}
+model Datatb{
+  id  Int       @id @default(autoincrement())
+  humidity String?
+  temp String?
+  timeupdate DateTime @updatedAt
+}
+
+// model conversation_Answers_model{
+// studentid Student  
+// ConversationIndex Int
+// conversationChat String
+// }
+// model Conversation{
+// ConversationID Int  @id @default(autoincrement())
+// ConversationName String
+// Conversation_Lesson Int
+// modaficationdate DateTime
+// AddedConversationDate DateTime
+// }
