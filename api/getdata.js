@@ -8,7 +8,7 @@ export default async function handler(req, res) {
             humidity:true,
             temp:true,
             timeupdate:true,
-          }
+          },
         });
         if (data.length === 0) {
           return res.status(404).json({ humidity: "No data found",temp: "No data found",timeupdate: "2023-03-24T15:30:00.000Z" });
@@ -17,6 +17,6 @@ export default async function handler(req, res) {
           res.status(200).json(data);
         }
       } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: "error.message" });
       }
 }
