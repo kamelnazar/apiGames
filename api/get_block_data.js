@@ -1,18 +1,16 @@
 import prisma from "../lib/prisma";
-
 export default async function handler(req, res) {
     try {
-        const data = await prisma.datatb.findMany({
+        const data = await prisma.block.findMany({
           select:{
             id:true,
-            humidity:true,
-            temp:true,
-            timeupdate:true,
-            blocknb:true,
+            plantname:true,
+            pumpnb:true,
+            datepump:true,
           },
         });
         if (data.length === 0) {
-          return res.status(404).json({id:"", humidity: "No data found",temp: "No data found",timeupdate: "2023-03-24T15:30:00.000Z",blocknb:"" });
+          return res.status(404).json({id:"", plantname: "No data found",pumpnb: "No data found",datepump: "2023-03-24T15:30:00.000Z" });
         }
         else{
           res.status(200).json(data);

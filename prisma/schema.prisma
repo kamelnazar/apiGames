@@ -12,7 +12,7 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-model Student {
+model Usertb {
   id        Int      @id @default(autoincrement())
   email     String?  @unique
   password  String?
@@ -30,13 +30,20 @@ model Lesson {
   description     String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-  student_profile Student[]
+  student_profile Usertb[]
 }
 model Datatb{
   id  Int       @id @default(autoincrement())
   humidity String?
   temp String?
   timeupdate DateTime @updatedAt
+  blocknb Int
+}
+model block{
+id Int @id @default(autoincrement())
+plantname String?
+pumpnb Int
+datepump DateTime @default(now())
 }
 
 // model conversation_Answers_model{
