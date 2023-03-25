@@ -1,5 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 
 generator client {
   provider        = "prisma-client-js"
@@ -8,7 +7,7 @@ generator client {
 
 datasource db {
   provider             = "mysql"
-  url                  = "mysql://f9ep8j8gvn7u0eya85lc:pscale_pw_Dgq0tIRYmPi14FuBXrkK00FGRjuu3cOjYmvDRkEGCAb@us-east.connect.psdb.cloud/mysteries_of_nature_db?sslaccept=strict"
+  url                  = "mysql://h8anbmh6cne3ak4qi4zq:pscale_pw_zb8oA9CKJfN6TTeOTkjp14ajIHI1QFPtZksSSrsf7NM@us-east.connect.psdb.cloud/mysteries_of_nature_db?sslaccept=strict"
   referentialIntegrity = "prisma"
 }
 
@@ -45,16 +44,8 @@ plantname String?
 pumpnb Int
 datepump DateTime @default(now())
 }
-
-// model conversation_Answers_model{
-// studentid Student  
-// ConversationIndex Int
-// conversationChat String
-// }
-// model Conversation{
-// ConversationID Int  @id @default(autoincrement())
-// ConversationName String
-// Conversation_Lesson Int
-// modaficationdate DateTime
-// AddedConversationDate DateTime
-// }
+model alarm{
+  id Int @id @default(autoincrement())
+  detectionsource String?
+  datepump DateTime @default(now())
+}
